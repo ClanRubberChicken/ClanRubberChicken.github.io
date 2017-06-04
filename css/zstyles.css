@@ -1,0 +1,40 @@
+body
+{
+color:#FFE200;
+font-family:"Comic Sans MS",cursive,sans-serif;
+background-color:#000000;
+background-image:url("/images/bg_fowl_animated.gif");
+background-attachment:fixed;
+background-position: center;
+}
+a:link {color:#FFE200;}      /* unvisited link */
+a:visited {color:#FFE200;}  /* visited link */
+a:hover {color:#FFE200;}  /* mouse over link */
+a:active {color:#FFE200;}  /* selected link */ 
+
+ul.nav { list-style-type:none; margin:0; padding:0; overflow:hidden; }
+li.nav { float:left; width:16.6%; }
+a.nav:link,a.nav:visited
+{
+display:block;width:100%;
+font-weight:bold;
+color:#FFFF00;
+background-color:#990000;
+text-align:center;
+padding:4px;
+text-decoration:none;
+text-transform:uppercase;
+border-radius: 180em 1em;
+}
+a.nav:hover,a.nav:active { background-color:#660000; }
+@media screen and (max-width: 980px) {
+  nav li {
+    float: none;
+    width: 23%;
+  }
+}
+@media screen and (max-width: 600px) {
+  nav li {
+    width: 27%;
+  }
+}
