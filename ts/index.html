@@ -31,6 +31,7 @@ function RedirectToTeamspeakUrl() {
 	var tsAddress = getParameterByName("s");
 	var tsPassword = getParameterByName("p");
 	var tsBookmarkName = getParameterByName("n");
+	var tsDefaultBookmarkName = "ClanRubberChicken";
 	
 	if (tsAddress.includes(".") == false) {
 		if (tsAddress.length > 0){
@@ -44,19 +45,26 @@ function RedirectToTeamspeakUrl() {
 	document.getElementById("password").innerHTML = tsPassword;
 	
 	var idBookmarkName = document.getElementById("bookmarkName");
-	if (tsBookmarkName.length > 0) {idBookmarkName.innerHTML = tsBookmarkName;}
-	else {idBookmarkName.innerHTML = tsAddress;}
+	if (tsBookmarkName.length == 0){
+		if (tsDefaultBookmarkName.length > 0){
+			if (tsAddress.length > 0){
+				tsBookmarkName = tsAddress+"'s "+tsDefaultBookmarkName;
+			}else{
+				tsBookmarkName = tsDefaultBookmarkName;
+			}
+		}else{
+			tsBookmarkName = tsAddress;
+		}
+	}
+	idBookmarkName.innerHTML = tsBookmarkName;
 	
 	var idTsURL = document.getElementById("tsURL");
-	idTsURL.href = "ts3server://"+tsAddress;
+	idTsURL.href = "ts3server://"+tsAddress+"?";
 	
-	if (tsPassword.length > 0) idTsURL.href +="?password="+tsPassword;
-	if (tsBookmarkName.length > 0) {
-		if(tsPassword.length > 0) {idTsURL.href +="&";}
-		else {idTsURL.href +="?";}
-		idTsURL.href +="addbookmark="+tsBookmarkName;
-	}
+	if (tsPassword.length > 0) 
+		idTsURL.href +="password="+tsPassword+"&?";
 	
+	idTsURL.href +="addbookmark="+tsBookmarkName;
 	window.location.replace(idTsURL.href);
 }
 </script>
