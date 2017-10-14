@@ -62,7 +62,7 @@ function RedirectToTeamspeakUrl() {
 	idTsURL.href = "ts3server://"+tsAddress+"?";
 	
 	if (tsPassword.length > 0) 
-		idTsURL.href +="password="+tsPassword+"&?";
+		idTsURL.href +="password="+tsPassword+"&";
 	
 	idTsURL.href +="addbookmark="+tsBookmarkName;
 	window.location.replace(idTsURL.href);
